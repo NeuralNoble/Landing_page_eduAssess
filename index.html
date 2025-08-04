@@ -606,8 +606,8 @@
                     <h1>Keep Your Child Busy, <span style="color: #FF6B4A;">Learning</span>, and <span style="color: #FF6B4A;">Improving</span> — <span style="color: #FF6B4A;">Automatically</span></h1>
                     <p>Give your child worksheets, snap a photo, and let our AI grade, analyze, and guide them — just like a personal teacher.</p>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn-primary">Contact Us to Get Started</a>
-                        <a href="#demo" class="btn-secondary">Watch the Demo</a>
+                        <button onclick="showContactForm()" class="btn-primary">Contact Us to Get Started</button>
+                        <a href="https://youtu.be/nVkB3mbKGBc" class="btn-secondary">Watch the Demo</a>
                     </div>
                 </div>
                 
@@ -796,6 +796,22 @@
         </div>
     </footer>
 
+    <!-- Contact Form Modal -->
+    <div id="contactModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="background: white; margin: 10% auto; padding: 30px; width: 90%; max-width: 500px; border-radius: 12px;">
+            <h3 style="margin-bottom: 20px;">Get Started with EduAssess</h3>
+            <form action="https://formspree.io/f/xyzpdqzb" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                <textarea name="message" placeholder="Tell us about your needs..." rows="4" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px;"></textarea>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" style="background: #4c51bf; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer;">Send Message</button>
+                    <button type="button" onclick="hideContactForm()" style="background: #6b7280; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -809,8 +825,8 @@
                 }
             });
         });
-
-        //  subtle header shadow on scroll
+    
+        // Subtle header shadow on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
@@ -819,6 +835,23 @@
                 header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
             }
         });
+    
+        // Contact form functions
+        function showContactForm() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+        
+        function hideContactForm() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
